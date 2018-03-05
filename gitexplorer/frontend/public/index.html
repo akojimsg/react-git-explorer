@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <!--[if lte IE 8]><script src="%PUBLIC_URL%/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="%PUBLIC_URL%/assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="%PUBLIC_URL%/assets/css/ie8.css" /><![endif]-->
+    <title>React Restful Git Repos explorer</title>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+          <header id="header" class="alt">
+            <h1><a href="/">Git Explorer</a></h1>
+            <nav>
+              <a href="#menu">Menu</a>
+            </nav>
+          </header> 
+
+          <nav id="menu">
+            <div class="inner">
+              <h2>Menu</h2>
+              <ul class="links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/reposviewer">Explorar</a></li>
+                <li><a href="https://github.com/akojimsg/luuna-test">Ver en Github</a></li>
+                <li><a href="#">What's Next</a></li>
+              </ul>
+              <a href="#" class="close">Close</a>
+            </div>
+          </nav>          
+
+          <div id="root"></div>
+
+        <!-- Footer -->
+          <section id="footer">
+            <div class="inner">
+              <ul class="copyright">
+                <li>&copy; Luuna. Prueba de React &amp; Django.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
+            </div>
+          </section>          
+    </div>
+
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+
+    <!-- Scripts -->
+    <script src="%PUBLIC_URL%/assets/js/skel.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/jquery.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/jquery.scrollex.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="%PUBLIC_URL%/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="%PUBLIC_URL%/assets/js/main.js"></script>
+
+  </body>
+</html>
