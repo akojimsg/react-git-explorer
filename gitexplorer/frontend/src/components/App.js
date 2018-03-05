@@ -4,7 +4,6 @@ const Router = ReactRouter.BrowserRouter;
 const Route = ReactRouter.Route;
 const Switch = ReactRouter.Switch;
 const Home = require('./Home');
-const Banner = require('./Banner');
 const Reposviewer = require('./Reposviewer');
 
 class App extends React.Component {
@@ -17,17 +16,14 @@ class App extends React.Component {
               <Route render={function(){
                 return (
                   <section id="wrapper">
-
-                      <div class="wrapper">
+                      <section id="four" class="wrapper alt style1">
                         <div class="inner">
-
-                          <h3 class="major">Error 404</h3>
+                          <h2 class="major">Error 404</h2>
                           <p>Page not found.</p>
-
+           
                         </div>
-                      </div>
-
-                  </section>                
+                      </section>
+                  </section>                                    
                   );
               }} />
           </Switch>
