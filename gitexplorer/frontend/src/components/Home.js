@@ -14,7 +14,7 @@ class Home extends React.Component {
           Git Repos es una aplicación hecho con <code>ReactJS</code> y <code>Django Rest Framework</code> para explorer
           los repositorios públicos de un usuario de github.
           </p>
-          <p><a href="/reposviewer" className="button special">Explora repositorios</a></p>
+          <p><a href="/reposviewer" className="button special">Ver en Acción</a></p>
         </div>   
       </section>            
  

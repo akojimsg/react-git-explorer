@@ -97,6 +97,12 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
+    "create-react-class": "^15.6.3",
+    "install": "^0.10.4",
+    "npm": "^5.7.1",
+    "react-json-table": "^0.1.1",
+    "ts-react-json-table": "^0.1.1",
     "webpack-bundle-tracker": "^0.2.1"
   }
 }
