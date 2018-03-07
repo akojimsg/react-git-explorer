@@ -35,22 +35,24 @@ class ReposTable extends React.Component {
 
       return (
         <section id="four" className="wrapper alt style1">
-          <div className="inner">
-              <h2>Repositorios GITHUB de @{this.props.username}</h2>
-                <div className="table-wrapper">
-                    {
-                      !this.state.repos &&
-                      <p>Explorando repositorios de @{this.props.username} ...</p>
-                    }
-                    {
-                      this.state.repos!=null &&
+          {
+            !this.state.repos &&
+            <div className="inner">
+                <h3>Explorando repositorios de @{this.props.username} ...</h3>
+            </div>
+          }
+          {
+            this.state.repos!=null &&
+            <div className="inner">
+                <h2>Repositorios GITHUB de @{this.props.username}</h2>
+                  <div className="table-wrapper">
                       <JsonTable rows={this.state.repos.data} columns={ columns } settings={ settings } />
-                    }
-                </div>
-                <ul className="actions">
-                  <li><a href="/reposviewer" className="button">Regresar</a></li>
-                </ul>            
-          </div>
+                  </div>
+                  <ul className="actions">
+                    <li><a href="/reposviewer" className="button">Regresar</a></li>
+                  </ul>            
+            </div>
+          }
         </section>
       );
     }
