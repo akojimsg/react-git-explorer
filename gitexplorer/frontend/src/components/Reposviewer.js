@@ -15,7 +15,7 @@ class ReposTable extends React.Component {
 
   componentDidMount(){
     Api.fetchUserRepos(this.props.username).then(response =>{
-      const repos = JSON.parse(response).data;
+      const repos = response.repos.data;
       this.setState({ repos });
     });      
   }
@@ -44,7 +44,7 @@ class ReposTable extends React.Component {
                     }
                     {
                       this.state.repos!=null &&
-                      <JsonTable rows={this.state.repos} columns={ columns } settings={ settings } />
+                      <JsonTable rows={this.state.repos.data} columns={ columns } settings={ settings } />
                     }
                 </div>
                 <ul className="actions">

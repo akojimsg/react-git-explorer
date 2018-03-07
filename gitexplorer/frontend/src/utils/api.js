@@ -1,14 +1,14 @@
 var axios = require('axios');
 
 function getProfile (username) {
-  return axios.get('http://localhost:8000/fetchrepos?username=' + username)
+  return axios.get('http://localhost:8000/fetchuserprofile?username=' + username)
     .then(function (user) {
       return user.data;
     });
 }
 
 function getRepos (username) {
-  return axios.get('http://localhost:8000/fetchuserprofile?username=' + username);
+  return axios.get('http://localhost:8000/fetchrepos?username=' + username);
 }
 
 function handleError (error) {
