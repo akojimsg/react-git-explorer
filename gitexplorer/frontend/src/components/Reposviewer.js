@@ -30,7 +30,7 @@ class ReposTable extends React.Component {
       var settings = {
         header: true,
         keyField: 'name',
-        noRowsMessage: 'El usuario no tiene proyectos o no existe'
+        noRowsMessage: 'This user does not exist or has no public repo'
       };  
 
       return (
@@ -38,13 +38,13 @@ class ReposTable extends React.Component {
           {
             !this.state.repos &&
             <div className="inner">
-                <h3>Explorando repositorios de @{this.props.username} ...</h3>
+                <h3>Fetching public repos for @{this.props.username} ...</h3>
             </div>
           }
           {
             this.state.repos!=null &&
             <div className="inner">
-                <h2>Repositorios GITHUB de @{this.props.username}</h2>
+                <h2>Git Repos for @{this.props.username}</h2>
                   <div className="table-wrapper">
                       <JsonTable rows={this.state.repos.data} columns={ columns } settings={ settings } />
                   </div>
@@ -178,7 +178,7 @@ class Reposviewer extends React.Component{
         <section id="wrapper">
           {!gitUserImage && <UserInput
             id='gitUser'
-            label='Ingresa un usuario para navegar su repo'
+            label='Type a username to view their public repos'
             onSubmit={this.handleSubmit} />}
 
           {gitUserImage != null &&
