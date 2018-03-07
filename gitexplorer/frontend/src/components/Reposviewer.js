@@ -23,13 +23,15 @@ class ReposTable extends React.Component {
   render(){
       var columns = [
           {key: 'id', label: 'Id'},
-          {key: 'full_name', label: 'Project'},
+          {key: 'full_name', label: 'Project', cell: function(row,columnKey){
+            return <a href={row.html_url}>{row.full_name}</a>;
+          }},
           {key: 'updated_at', label: 'Last Updated'},
       ];
 
       var settings = {
         header: true,
-        keyField: 'name',
+        keyField: 'id',
         noRowsMessage: 'This user does not exist or has no public repo'
       };  
 
