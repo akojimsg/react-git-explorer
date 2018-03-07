@@ -5,6 +5,7 @@ const Route = ReactRouter.Route;
 const Switch = ReactRouter.Switch;
 const Home = require('./Home');
 const Reposviewer = require('./Reposviewer');
+const Whatsnext = require('./Whatsnext');
 
 class App extends React.Component {
   render() {
@@ -13,6 +14,7 @@ class App extends React.Component {
           <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/reposviewer' component={Reposviewer} />
+              <Route exact path='/whatsnext' component={Whatsnext} />
               <Route render={function(){
                 return (
                   <section id="wrapper">
