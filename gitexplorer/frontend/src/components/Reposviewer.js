@@ -15,7 +15,7 @@ class ReposTable extends React.Component {
 
   componentDidMount(){
     Api.fetchUserRepos(this.props.username).then(response =>{
-      const repos = response.repos.data;
+      const repos = JSON.parse(response).data;
       this.setState({ repos });
     });      
   }
