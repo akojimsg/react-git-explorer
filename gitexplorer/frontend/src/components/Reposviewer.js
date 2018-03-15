@@ -10,13 +10,17 @@ class ReposTable extends React.Component {
 
     this.state = {
       repos: null,
+      show: "false",
     };
   }
 
   componentDidMount(){
     Api.fetchUserRepos(this.props.username).then(response =>{
       const repos = response.repos.data;
-      this.setState({ repos });
+      this.setState({
+        repos: repos,
+        show: "true",
+      });
     });      
   }
   
@@ -38,21 +42,18 @@ class ReposTable extends React.Component {
       return (
         <section id="four" className="wrapper alt style1">
           {
-            !this.state.repos &&
+            this.state.show==="false" &&
             <div className="inner">
                 <h3>Fetching public repos for @{this.props.username} ...</h3>
             </div>
           }
           {
-            this.state.repos!=null &&
+            this.state.show==="true" &&
             <div className="inner">
                 <h2>Git Repos for @{this.props.username}</h2>
                   <div className="table-wrapper">
                       <JsonTable rows={this.state.repos.data} columns={ columns } settings={ settings } />
                   </div>
-                  <ul className="actions">
-                    <li><a href="/reposviewer" className="button">Regresar</a></li>
-                  </ul>            
             </div>
           }
         </section>
@@ -61,7 +62,7 @@ class ReposTable extends React.Component {
 }
 
 ReposTable.propTypes = {
-  avatar: PropTypes.string.isRequired,
+  show: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
 };
 
@@ -70,7 +71,8 @@ class UserInput extends React.Component {
     constructor(props) {
     super(props);
     this.state = {
-      username: ''
+      username: '',
+      submitAction: props.submitAction,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -82,18 +84,41 @@ class UserInput extends React.Component {
 
     this.setState(function () {
       return {
-        username: value
+        username: value,
+        submitAction: this.props.submitAction,
       }
     });
+
+    this.props.onChange(event,'gitUser');
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    
-    this.props.onSubmit(
-      this.props.id,
-      this.state.username
-    );
+
+    if(this.state.submitAction===this.props.submitAction){
+        this.props.onSubmit(
+          this.props.id,
+          this.state.username
+        );
+
+        this.setState(function () {
+          return {
+            username: this.state.username,
+            submitAction: "Resetear",
+          }
+        });
+    }else{
+        this.props.onReset(
+          this.props.id
+        );
+
+        this.setState(function () {
+          return {
+            username: '',
+            submitAction: this.props.submitAction,
+          }
+        });
+    }
   }
 
   render() {
@@ -120,7 +145,7 @@ class UserInput extends React.Component {
                       className="special fit" 
                       type="submit" 
                       disabled={!this.state.username}>
-                      Enviar
+                      {this.state.submitAction}
                     </button>
                 </div>                    
               </div>
@@ -134,7 +159,10 @@ class UserInput extends React.Component {
 UserInput.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  submitAction: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 }
 
 UserInput.defaultProps = {
@@ -146,10 +174,13 @@ class Reposviewer extends React.Component{
     super(props);
     this.state = {
       GitUserName: '',
-      GitUserImage: null,
+      showReposTable: "false",
+      actionText: "Enviar",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleSubmit(id, username) {
@@ -157,7 +188,22 @@ class Reposviewer extends React.Component{
     this.setState(function () {
       var newState = {};
       newState[id + 'Name'] = username;
-      newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200'
+      //newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200'
+      newState['showReposTable'] = "true"
+      return newState;
+    });
+  }
+
+  handleChange(event, id){
+
+    if(!event) return;
+
+    var value = event.target.value;
+
+    this.setState(function () {
+      var newState = {};
+      newState[id + 'Name'] = value;
+      newState['showReposTable'] = "false"
       return newState;
     });
   }
@@ -166,29 +212,32 @@ class Reposviewer extends React.Component{
     this.setState(function () {
       var newState = {};
       newState[id + 'Name'] = '';
-      newState[id + 'Image'] = null;
+      newState['showReposTable'] = "false";
       return newState;
-    })
+    });
   }
 
   render(){
 
     var gitUserName = this.state.gitUserName;
-    var gitUserImage = this.state.gitUserImage
+    var showReposTable = this.state.showReposTable;
+    var actionText = this.state.actionText;
 
     return(
         <section id="wrapper">
-          {!gitUserImage && <UserInput
+          <UserInput
             id='gitUser'
             label='Type a username to view their public repos'
-            onSubmit={this.handleSubmit} />}
+            submitAction={actionText}
+            onSubmit={this.handleSubmit}
+            onReset ={this.handleReset}
+            onChange = {this.handleChange}/>
 
-          {gitUserImage != null &&
+          {showReposTable === "true" &&
             <ReposTable
-              avatar={gitUserImage}
+              show="false"
               username={gitUserName} />}
-
-        </section>      
+        </section>
     );
   }
 }
