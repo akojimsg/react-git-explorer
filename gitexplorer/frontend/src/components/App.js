@@ -1,10 +1,10 @@
-const React = require('react');
+import React from 'react';
+import ReposViewerContainer from '../containers/ReposViewerContainer';
 const ReactRouter = require('react-router-dom');
 const Router = ReactRouter.BrowserRouter;
 const Route = ReactRouter.Route;
 const Switch = ReactRouter.Switch;
 const Home = require('./Home');
-const Reposviewer = require('./Reposviewer');
 const Whatsnext = require('./Whatsnext');
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
       <Router>
           <Switch>
               <Route exact path='/' component={Home} />
-              <Route exact path='/reposviewer' component={Reposviewer} />
+              <Route exact path='/reposviewer' component={ReposViewerContainer} />
               <Route exact path='/whatsnext' component={Whatsnext} />
               <Route render={function(){
                 return (
@@ -22,10 +22,10 @@ class App extends React.Component {
                         <div class="inner">
                           <h2 class="major">Error 404</h2>
                           <p>Page not found.</p>
-           
+
                         </div>
                       </section>
-                  </section>                                    
+                  </section>
                   );
               }} />
           </Switch>
@@ -34,4 +34,4 @@ class App extends React.Component {
   }
 }
 
-module.exports = App;
+export default  App;
