@@ -104,7 +104,7 @@ class UserInput extends React.Component {
         this.setState(function () {
           return {
             username: this.state.username,
-            submitAction: "Resetear",
+            submitAction: "Reset",
           }
         });
     }else{
@@ -125,7 +125,7 @@ class UserInput extends React.Component {
     return (
       <section id="four" className="wrapper alt style1">
         <div className="inner">
-          <h2 className="major">Explora Repositorios</h2>
+          <h2 className="major">Browse User Repos</h2>
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="inner">
@@ -175,7 +175,7 @@ class Reposviewer extends React.Component{
     this.state = {
       GitUserName: '',
       showReposTable: "false",
-      actionText: "Enviar",
+      actionText: "Send",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

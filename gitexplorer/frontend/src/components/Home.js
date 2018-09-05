@@ -11,10 +11,10 @@ class Home extends React.Component {
           <div className="logo"><span className="icon fa-diamond"></span></div>
           <h2>Git Repos Explorer</h2>
           <p>
-          Git Repos es una aplicación hecho con <code>ReactJS</code> y <code>Django Rest Framework</code> para explorer
-          los repositorios públicos de un usuario de github.
+          This is a demo application, built on <code>ReactJS</code> and <code>Django Rest Framework</code>, to
+          browse public repositories on github.
           </p>
-          <p><a href="/reposviewer" className="button special">Ver en Acción</a></p>
+          <p><a href="/reposviewer" className="button special">See in action</a></p>
         </div>   
       </section>            
  
