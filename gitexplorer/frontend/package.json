@@ -97,7 +97,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "create-react-class": "^15.6.3",
     "install": "^0.10.4",
     "npm": "^5.7.1",
